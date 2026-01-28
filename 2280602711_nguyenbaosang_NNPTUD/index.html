@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <title>Post & Comment Dashboard</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        h1, h2 {
+            margin: 0 0 15px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .card-header span {
+            font-size: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #667eea;
+        }
+
+        button {
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            color: white;
+        }
+
+        .btn-add:hover {
+            opacity: 0.9;
+        }
+
+        .btn-edit {
+            background: #ffc107;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            background: #f6f7fb;
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .post-info {
+            flex: 1;
+        }
+
+        .actions button {
+            margin-left: 6px;
+        }
+
+        .deleted {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- POSTS -->
+    <div class="card">
+        <div class="card-header">
+            <h1>Quản lý Posts</h1>
+            <span>📝</span>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="titleInput" placeholder="Tiêu đề post">
+            <input type="number" id="viewsInput" placeholder="Lượt xem">
+            <button class="btn-add" onclick="addPost()">+ Thêm</button>
+        </div>
+
+        <ul id="postList"></ul>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="card">
+        <div class="card-header">
+            <h2>Quản lý Comments</h2>
+            <span>💬</span>
+        </div>
+
+        <div class="form-group">
+            <input type="text" id="commentText" placeholder="Nội dung comment">
+            <input type="text" id="commentPostId" placeholder="Post ID">
+            <button class="btn-add" onclick="addComment()">+ Thêm</button>
+        </div>
+
+        <ul id="commentList"></ul>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
